@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SISTEMA DE VENTA</title>
+<link rel="stylesheet"
+	th:href="@{../vendors/mdi/css/materialdesignicons.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+	<div class="container-scroller">
+		<section th:replace="/fragments/menu::menu"></section>
+		<div class="main-panel">
+			<div class="content-wrapper">
+				<a class="btn btn-warning icon" th:href="@{/categoria}"><img
+					th:src="@{../icons/return.svg}"></a>
+				<div class="col-lg-12 grid-margin stretch-card pt-3">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">INGRESE LOS DATOS DE CATEGORIA</h4>
+							<form th:action="@{/categorias}" th:object="${categoria}"
+								method="post" class="formulario">
+								<div class="form-group col-md-12">
+									<label>NOMBRE </label> <input th:field="*{nombre}"
+										placeholder="Nombre de la categoría" type="text"
+										class="form-control text-white"
+										th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+									<div class="invalid-feedback" th:errors="*{nombre}"></div>
+								</div>
+								<div class="form-group col-md-12">
+									<label class="form-label">DESCRIPCION </label> <input
+										class="form-control text-white" th:field="*{descripcion}"
+										type="text" placeholder="Descripción de la categoría"
+										th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid' : ''">
+									<div class="invalid-feedback" th:errors="*{descripcion}"></div>
+								</div>
+								<button class="btn btn-success icon" type="submit">
+									<img th:src="@{../icons/save.svg}">
+								</button>
+								<input type="hidden" th:field="*{codigo}"></input>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:src="@{../vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{../js/off-canvas.js}"></script>
+<script th:src="@{../js/misc.js}"></script>
+</html>

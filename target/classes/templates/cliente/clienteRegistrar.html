@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SISTEMA DE VENTA</title>
+<link rel="stylesheet"
+	th:href="@{../vendors/mdi/css/materialdesignicons.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+	<div class="container-scroller">
+		<section th:replace="/fragments/menu::menu"></section>
+		<div class="main-panel">
+			<div class="content-wrapper">
+			<a class="btn btn-warning icon" th:href="@{/cliente}"><img
+					th:src="@{../icons/return.svg}"></a>
+				<div class="col-12 grid-margin">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">INGRESE LOS DATOS DEL CLIENTE</h4>
+							<form th:action="@{/clientes}" th:object="${cliente}"
+								method="post" class="forms-sample" enctype="multipart/form-data">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="nombre" class="col-sm-3 col-form-label">NOMBRE </label>
+											<div class="col-sm-9">
+												<input class="form-control text-white" th:field="*{nombre}" type="text"
+													placeholder="Ingrese el nombre"
+													th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+													<div class="invalid-feedback" th:errors="*{nombre}"></div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="apellido" class="col-sm-3 col-form-label">APELLIDO </label>
+											<div class="col-sm-9">
+												<input class="form-control text-white" th:field="*{apellido}"
+													type="text" placeholder="Ingrese el apellido"
+													th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''">
+													<div class="invalid-feedback" th:errors="*{apellido}"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="direccion" class="col-sm-3 col-form-label">DIRRECCION </label>
+											<div class="col-sm-9">
+												<input class="form-control text-white" th:field="*{direccion}"
+													type="text" placeholder="Ingrese la direccion"
+													th:classappend="${#fields.hasErrors('direccion')} ? 'is-invalid' : ''">
+													<div class="invalid-feedback" th:errors="*{direccion}"></div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="telefono" class="col-sm-3 col-form-labell">TELEFONO </label>
+											<div class="col-sm-9">
+												<input class="form-control text-white" th:field="*{telefono}"
+													type="text" placeholder="Ingrese el telefono"
+													th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''">
+													<div class="invalid-feedback" th:errors="*{telefono}"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="correo" class="col-sm-3 col-form-labell">CORREO </label>
+											<div class="col-sm-9">
+												<input class="form-control text-white" th:field="*{correo}"
+													type="text" placeholder="Ingrese el correo"
+													th:classappend="${#fields.hasErrors('correo')} ? 'is-invalid' : ''">
+													<div class="invalid-feedback" th:errors="*{correo}"></div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="dni" class="col-sm-3 col-form-labell">DNI </label>
+											<div class="col-sm-9">
+												<input class="form-control text-white" th:field="*{dni}"
+													type="text" placeholder="Ingrese el dni"
+													th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''">
+													<div class="invalid-feedback" th:errors="*{dni}"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-12" style="text-align: right">
+										<button class="btn btn-success icon" type="submit"><img th:src="@{../icons/save.svg}"></button>
+									</div>
+								</div>
+								<input type="hidden" th:field="*{codigo}">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:src="@{../vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{../js/off-canvas.js}"></script>
+<script th:src="@{../js/misc.js}"></script>
+</html>
