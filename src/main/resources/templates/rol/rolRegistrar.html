@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="master">
+<head>
+<meta charset="UTF-8">
+<title>SISTEMA DE VENTA</title>
+<link rel="stylesheet"
+	th:href="@{../vendors/mdi/css/materialdesignicons.min.css}">
+<link rel="stylesheet"
+	th:href="@{../vendors/css/vendor.bundle.base.css}">
+<link rel="stylesheet"
+	th:href="@{../../vendors/select2/select2.min.css}">
+<link rel="stylesheet"
+	th:href="@{../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+	<div class="container-scroller">
+		<section th:replace="/fragments/menu::menu"></section>
+		<main layout:fragment="contenido" class="py-5">
+			<div class="main-panel">
+				<div class="content-wrapper">
+				<a class="btn btn-warning icon" th:href="@{/rol}"><img
+					th:src="@{../icons/return.svg}"></a>
+					<div class="col-lg-12 grid-margin stretch-card pt-3">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">INGRESE LOS DATOS DEL ROL</h4>
+								<div
+									th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+									th:if="${mensaje != null}" th:text="${mensaje}" class="alert">
+								</div>
+								<form th:object="${role}" th:action="@{/roles}" method="post">
+								<input type="hidden" th:field="*{codigo}"></input>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label>ROL</label>
+												<select th:field="*{authority}"
+													class="js-example-basic-single" style="width: 100%">
+													<option value="ROLE_ADMIN">ROLE_ADMIN</option>
+													<option value="ROLE_CAJERO">ROLE_CAJERO</option>
+													<option value="ROLE_REPONEDOR">ROLE_REPONEDOR</option>
+													<option value="ROLE_RECEPCIONISTA">ROLE_RECEPCIONISTA</option>
+												</select>
+										
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label>EMPLEADO </label> <select th:field="*{empleado}"
+													class="js-example-basic-single" style="width: 100%">
+													<option th:each="empleado: ${empleados}"
+														th:value="${empleado.codigo}" th:text="${empleado.nombre}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label>USER_ID </label> <select th:field="*{user_id}"
+												class="js-example-basic-single" style="width: 100%">
+												<option th:each="usuario: ${usuarios}"
+													th:value="${usuario.codigo}" th:text="${usuario.username}"></option>
+											</select>
+										</div>
+									</div>
+									<button class="btn btn-success icon" type="submit"><img th:src="@{../icons/save.svg}"></button>									
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+<script th:src="@{../vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{../../vendors/select2/select2.min.js}"></script>
+<script th:src="@{../js/select2.js}"></script>
+<script th:src="@{../js/off-canvas.js}"></script>
+<script th:src="@{../js/misc.js}"></script>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	th:href="@{../vendors/mdi/css/materialdesignicons.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+	<div th:fragment="menu">
+		<!-- partial:partials/_sidebar.html -->
+		<nav class="sidebar sidebar-offcanvas" id="sidebar">
+			<div
+				class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+				<a class="sidebar-brand brand-logo" href="/"><img
+					th:src="@{../images/logo.svg}" alt="logo" /></a> <a
+					class="sidebar-brand brand-logo-mini" href="/"><img
+					th:src="@{../images/logo-mini.svg}" alt="logo" /></a>
+			</div>
+			<ul class="nav">
+				<li class="nav-item nav-category"><span class="nav-link">MENÚ</span>
+				</li>
+				<li class="nav-item menu-items"><a class="nav-link" href="/">
+						<span class="menu-icon"> <img th:src="@{../icons/home.svg}"
+							class="icon4">
+					</span> <span class="menu-title">INICIO</span>
+				</a></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img
+							th:src="@{../icons/product.svg}" class="icon4">
+					</span> <span class="menu-title">PRODUCTO</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/producto">Lista de Productos</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/productos">Registrar Producto</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img
+							th:src="@{../icons/client.svg}" class="icon4">
+					</span> <span class="menu-title">CLIENTE</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/cliente">Lista de Clientes</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/clientes">Registrar Cliente</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img
+							th:src="@{../icons/venta.svg}" class="icon4">
+					</span> <span class="menu-title">VENTA</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/ventas/">Lista de Ventas</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/vender/">Registrar Venta</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img
+							th:src="@{../icons/empleado.svg}" class="icon4">
+					</span> <span class="menu-title">EMPLEADO</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/empleado">Lista de Empleados</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/empleados">Registrar Empleado</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img
+							th:src="@{../icons/categoria.svg}" class="icon4">
+					</span> <span class="menu-title">CATEGORIA</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/categoria">Lista de Categorias</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/categorias">Registrar Categoria</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img
+							th:src="@{../icons/proveedor.svg}" class="icon4">
+					</span> <span class="menu-title">PROVEEDOR</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/proveedor">Lista de Proveedores</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/proveedores">Registrar Proveedor</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img th:src="@{../icons/user.svg}"
+							class="icon4">
+					</span> <span class="menu-title">USUARIO</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/usuario">Lista de Usuarios</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/usuarios">Registrar Usuario</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img th:src="@{../icons/rol.svg}"
+							class="icon4">
+					</span> <span class="menu-title">ROL</span> <i class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/rol">Lista de Roles</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/roles">Registrar Rol</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="menu-icon"> <img
+							th:src="@{../icons/metodo.svg}" class="icon4">
+					</span> <span class="menu-title">METODO DE PAGO</span> <i
+						class="menu-arrow"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-menu-dark collapse">
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/metodo">Lista de Metodos</a></li>
+						<li class="nav-item"><a class="dropdown-item nav-link"
+							href="/metodos">Registrar Metodo</a></li>
+					</ul></li>
+				<li class="nav-item menu-items"><a class="nav-link"
+					th:href="@{/ventas/?format=pdf}" target="_blank"> <span
+						class="menu-icon"> <img th:src="@{../icons/report.svg}"
+							class="icon4">
+					</span> <span class="menu-title">REPORTES</span>
+				</a></li>
+			</ul>
+		</nav>
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:partials/_navbar.html -->
+			<nav class="navbar p-0 fixed-top d-flex flex-row">
+				<div
+					class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+					<a class="navbar-brand brand-logo-mini" href="index.html"><img
+						src="assets/images/logo-mini.svg" alt="logo" /></a>
+				</div>
+				<div
+					class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+					<button class="navbar-toggler navbar-toggler align-self-center"
+						type="button" data-toggle="minimize">
+						<span class="mdi mdi-menu"></span>
+					</button>
+					<ul class="navbar-nav w-100">
+						<li class="nav-item w-100">
+							<div th:text="${titulo}"></div> <!--                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search"> -->
+							<!--                   <input type="text" class="form-control" placeholder="Search products"> -->
+							<!--                 </form> -->
+						</li>
+					</ul>
+					<ul class="navbar-nav w-100">
+						<li class="nav-item w-100">
+							<div id="reloj">
+								<p id="fecha"></p>
+								<p id="tiempo"></p>
+							</div> <!-- Acá mostraremos el reloj desde JavaScript --> <!--                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search"> -->
+							<!--                   <input type="text" class="form-control" placeholder="Search products"> -->
+							<!--                 </form> -->
+						</li>
+					</ul>
+					<ul class="navbar-nav navbar-nav-right">
+						<li class="nav-item nav-settings d-none d-lg-block"><a
+							class="nav-link" href="#"> <i class="mdi mdi-view-grid"></i>
+						</a></li>
+ 						<li class="nav-item dropdown border-left">
+						<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+							data-bs-toggle="dropdown">
+							<i class="mdi mdi-bell"></i>  
+							<span class="count bg-danger"></span>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+							aria-labelledby="notificationDropdown">
+							<h6 class="p-3 mb-0">Notifications</h6>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<div class="preview-icon bg-dark rounded-circle">
+										<i class="mdi mdi-calendar text-success"></i>
+									</div>
+								</div>
+								<div class="preview-item-content">
+									<p class="preview-subject mb-1">PRODUCTOS CASI SIN STOCK</p>
+									<ul th:each="producto : ${productos}">
+										<li class="text-muted ellipsis mb-0" th:if="${producto.minimo >= producto.actual}"
+										th:text="${producto.codigo}"></li> 
+									</ul>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+
+							<li class="nav-item dropdown"><a class="nav-link"
+								id="profileDropdown" href="#" data-bs-toggle="dropdown">
+									<div class="navbar-profile">
+										<img class="img-xs rounded-circle"
+											th:src="@{../images/logo-mini.svg}" alt="">
+										<p sec:authorize="isAuthenticated()"
+											class="mb-0 d-none d-sm-block navbar-profile-name"
+											sec:authentication="name"></p>
+										<i class="mdi mdi-menu-down d-none d-sm-block"></i>
+									</div>
+							</a>
+								<div
+									class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+									aria-labelledby="profileDropdown">
+									<h6 class="p-3 mb-0">PERFIL</h6>
+									<div class="dropdown-divider"></div>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item preview-item">
+										<div class="preview-thumbnail">
+											<div class="preview-icon bg-dark rounded-circle">
+												<i class="mdi mdi-logout text-danger"></i>
+											</div>
+										</div>
+										
+										<form id="logoutForm" th:action="@{/logout}" method="post">
+											<button class="dropdown-item"
+												onclick="document.getElementById('logoutForm').submit();"
+												type="submit">Cerrar Sesión</button>
+										</form>
+									</a>
+									<div class="dropdown-divider"></div>
+								</div></li>
+					</ul>
+					<button
+						class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+						type="button" data-toggle="offcanvas">
+						<span class="mdi mdi-format-line-spacing"></span>
+					</button>
+				</div>
+			</nav>
+		</div>
+		<!-- End custom js for this page -->
+	</div>
+</body>
+<script th:src="@{../vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{../js/off-canvas.js}"></script>
+<script th:src="@{../js/misc.js}"></script>
+</html>

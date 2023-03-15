@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SISTEMA DE VENTA</title>
+<link rel="stylesheet"
+	th:href="@{../vendors/mdi/css/materialdesignicons.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+	<div class="container-scroller">
+		<section th:replace="/fragments/menu::menu"></section>
+		<div class="main-panel container">
+			<div class="content-wrapper">
+				<form class="d-flex pt-3 mx-5" role="search" th:action="@{/empleado}">
+					<button class="btn btn-success icon3" type="submit"><img th:src="@{../icons/search.svg}"></button>
+					<input class="form-control me-2 text-white" type="search" name="search" id="search" th:value="${search}"
+						aria-label="Search" placeholder="Search">
+				</form>
+				<div class="col-lg-12 grid-margin stretch-card pt-3">
+					<div class="card">
+						<div class="card-body">
+							<a class="btn btn-light mx-3 icon" th:href="@{/empleados}"><img th:src="@{../icons/add.svg}"></a>
+						</div>
+						<div class="table">
+							<table class="table table-hover">
+								<thead>
+									<tr class="text-center">
+										<th>CODIGO</th>
+										<th>NOMBRE</th>
+										<th>APELLIDO</th>
+										<th>FECHA NACIMIENTO</th>
+										<th>FECHA CONTRATO</th>
+										<th>DNI</th>
+										<th>ACCIONES</th>
+									</tr>
+								</thead>
+								<tbody class="text-center text-white">
+
+									<tr th:each="empleado:${empleados}">
+										<td><a class="btn btn-success"
+											th:href="@{/empleado}+@{detalle/}+${empleado.codigo}"
+											th:text="${empleado.codigo}"></a></td>
+										<td th:text="${empleado.nombre}"></td>
+										<td th:text="${empleado.apellido}"></td>
+										<td th:text="${empleado.nacimiento}"></td>
+										<td th:text="${empleado.contrato}"></td>
+										<td th:text="${empleado.dni}"></td>
+										<td><a class="btn btn-primary btn-xs icon2"
+											th:href="@{/empleados/}+${empleado.codigo}"><img th:src="@{../icons/edit.svg}"></a>
+											<a class="btn btn-danger btn-xs icon2"
+											th:href="@{/empleado}+@{/eliminar/}+${empleado.codigo}"><img th:src="@{../icons/delete.svg}"></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:src="@{../vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{../js/off-canvas.js}"></script>
+<script th:src="@{../js/misc.js}"></script>
+</html>

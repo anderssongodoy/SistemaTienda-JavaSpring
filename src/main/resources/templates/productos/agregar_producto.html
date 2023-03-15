@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="master">
+<head>
+<meta charset="UTF-8">
+<title>SISTEMA DE VENTA</title>
+<link rel="stylesheet"
+	th:href="@{../vendors/mdi/css/materialdesignicons.min.css}">
+<link rel="stylesheet"
+	th:href="@{../vendors/css/vendor.bundle.base.css}">
+<link rel="stylesheet"
+	th:href="@{../../vendors/select2/select2.min.css}">
+<link rel="stylesheet"
+	th:href="@{../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+	<div class="container-scroller">
+		<section th:replace="/fragments/menu::menu"></section>
+		<main layout:fragment="contenido" class="py-5">
+			<div class="main-panel">
+				<div class="content-wrapper">
+				<a class="btn btn-warning icon" th:href="@{/producto}"><img
+					th:src="@{../icons/return.svg}"></a>
+					<div class="col-lg-12 grid-margin stretch-card pt-3">
+						<div class="card">
+							<div class="card-body" >
+								<h4 class="card-title">INGRESE LOS DATOS DEL PRODUCTO</h4>
+								<div
+									th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+									th:if="${mensaje != null}" th:text="${mensaje}" class="alert">
+								</div>
+								<form th:object="${producto}" th:action="@{/productos}"
+									method="post" enctype="multipart/form-data">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label>PROVEEDOR </label> <select th:field="*{proveedor}"
+													class="js-example-basic-single text-white" style="width: 100%"
+													th:classappend="${#fields.hasErrors('proveedor')} ? 'is-invalid' : ''">
+													<option th:each="proveedor: ${proveedores}"
+														th:value="${proveedor.codigo}"
+														th:text="${proveedor.descripcion}"></option>
+												</select>
+												<div class="invalid-feedback" th:errors="*{proveedor}"></div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group row">
+											<label>CATEGORIA </label> <select th:field="*{categoria}"
+												class="js-example-basic-single text-white"
+												>
+												<option th:each="categoria: ${categorias}"
+													th:value="${categoria.codigo}"
+													th:text="${categoria.descripcion}"></option>
+											</select>
+											<div class="invalid-feedback" th:errors="*{categoria}"></div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="existencia">DESCRIPCION</label> <input
+											autocomplete="off" th:field="*{descripcion}" id="existencia"
+											placeholder="Descripcion del producto" type="text"
+											class="form-control text-white"
+											th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid' : ''">
+										<div class="invalid-feedback" th:errors="*{descripcion}"></div>
+
+									</div>
+									<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+										<label for="existencia">COSTO </label> 
+										<div class="col-sm-9">
+										<input
+											autocomplete="off" th:field="*{costo}" id="precio"
+											placeholder="Precio del producto"
+											class="form-control text-white"
+											th:classappend="${#fields.hasErrors('costo')} ? 'is-invalid' : ''">
+											<div class="invalid-feedback" th:errors="*{costo}"></div>
+									</div>
+									</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+										<label for="existencia">VENTA </label> 
+										<div class="col-sm-9">
+										<input
+											autocomplete="off" th:field="*{venta}" id="precio"
+											placeholder="Precio del producto" 
+											class="form-control text-white"
+											th:classappend="${#fields.hasErrors('venta')} ? 'is-invalid' : ''">
+										<div class="invalid-feedback" th:errors="*{venta}"></div>
+										</div>
+										</div>
+									</div>
+									</div>
+									<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+										<label for="existencia">MINIMO </label> 
+										<div class="col-sm-9">
+										<input
+											autocomplete="off" th:field="*{minimo}" id="precio"
+											placeholder="Stock del producto" type="number"
+											class="form-control text-white"
+											th:classappend="${#fields.hasErrors('minimo')} ? 'is-invalid' : ''">
+										<div class="invalid-feedback" th:errors="*{minimo}"></div>
+									</div>
+									</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+										<label for="existencia">Actual</label> 
+										<div class="col-sm-9">
+										<input
+											autocomplete="off" th:field="*{actual}" id="precio"
+											placeholder="Stock del producto" type="number"
+											class="form-control text-white"
+											th:classappend="${#fields.hasErrors('actual')} ? 'is-invalid' : ''">
+										<div class="invalid-feedback" th:errors="*{actual}"></div>
+									</div>
+									</div>
+									</div>
+									</div>
+									<div class="form-group">
+										<label for="existencia">Foto </label> <input id="file" name="file" type="file"
+											class="form-control text-white">
+									</div>
+									<div>
+									<button class="btn btn-success icon" type="submit"><img th:src="@{../icons/save.svg}"></button>
+									</div>
+									<input type="hidden" th:field="*{codigo}">
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</main>
+	</div>
+</body>
+<script th:src="@{../vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{../js/off-canvas.js}"></script>
+<script th:src="@{../js/misc.js}"></script>
+<script th:src="@{../../vendors/select2/select2.min.js}"></script>
+<script th:src="@{../js/select2.js}"></script>
+</html>

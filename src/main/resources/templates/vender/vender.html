@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="master">
+<head>
+<meta charset="UTF-8">
+<title>SISTEMA DE VENTA</title>
+<link rel="stylesheet"
+	th:href="@{../vendors/mdi/css/materialdesignicons.min.css}">
+<link rel="stylesheet"
+	th:href="@{../vendors/css/vendor.bundle.base.css}">
+<link rel="stylesheet"
+	th:href="@{../../vendors/select2/select2.min.css}">
+<link rel="stylesheet"
+	th:href="@{../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+<body>
+	<div class="container-scroller">
+		<section th:replace="/fragments/menu::menu"></section>
+		<main layout:fragment="contenido" class="pt-5">
+			<div class="main-panel">
+				<div class="content-wrapper">
+				<a class="btn btn-warning icon" th:href="@{/ventas}"><img
+					th:src="@{../icons/return.svg}"></a>
+					<div class="col-lg-12 grid-margin stretch-card pt-3">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">INGRESE LOS PRODUCTOS A VENDER</h4>
+								<div
+									th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+									th:if="${mensaje != null}" th:text="${mensaje}" class="alert">
+								</div>
+								<form th:object="${producto}" th:action="@{/vender/agregar}"
+									method="post">
+									<div class="form-group">
+										<label for="codigo">PRODUCTOS </label>
+										<select th:field="*{codigo}" class="js-example-basic-single" style="width: 100%"> 
+										<option th:each="product: ${productos}" th:value="${product.codigo}"
+										th:text="${product.descripcion}"></option>
+										</select>
+										<button type="submit" class="btn btn-success mt-3">
+										Agregar&nbsp;</button>
+
+									</div>
+								</form>
+								<form class="mt-2" th:object="${venta}" th:action="@{/vender/terminar}" method="post">
+									<button type="submit" class="btn btn-success">
+										Terminar</button>
+									<a th:href="@{/vender/limpiar}" class="btn btn-danger">Cancelar
+										venta</a> &nbsp;&nbsp;&nbsp;
+										<label>EMPLEADO </label> <select th:field="*{empleado}"
+										class="js-example-basic-single text-white" style="width: 60%">
+										<option th:each="empleado: ${empleados}"
+											th:value="${empleado.codigo}" th:text="${empleado.apellido}"></option>
+									</select><label class="mt-3">CLIENTE </label> <select th:field="*{cliente}"
+										class="js-example-basic-single text-white" style="width: 25%">
+										<option th:each="cliente: ${clientes}"
+											th:value="${cliente.codigo}" th:text="${cliente.apellido}"></option>
+									</select><label>METODO DE PAGO </label> <select th:field="*{pago}"
+										class="js-example-basic-single text-white" style="width: 25%">
+										<option th:each="pago: ${pagos}"
+											th:value="${pago.codigo}" th:text="${pago.descripcion}"></option>
+									</select>
+								</form>
+								<h1 th:text="${'Total: ' + total}"></h1>
+								<div class="table-responsive">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Codigo</th>
+												<th>Descripcion</th>
+												<th>Venta</th>
+												<th>Cantidad</th>
+												<th>Total</th>
+												<th>Quitar de lista</th>
+											</tr>
+										</thead>
+										<tbody class="text-white">
+											<tr th:each="producto, iterador : ${session.carrito}">
+												<td th:text="${producto.codigo}"></td>
+												<td th:text="${producto.descripcion}"></td>
+												<td th:text="${producto.venta}"></td>
+												<td th:text="${producto.cantidad}"></td>
+												<td th:text="${producto.total}"></td>
+												<td>
+													<form th:action="@{/vender/quitar/} + ${iterador.index}"
+														method="post">
+														<button type="submit" class="btn btn-danger">
+															<i class="fa fa-trash"></i>
+														</button>
+													</form>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</main>
+	</div>
+</body>
+<script th:src="@{../vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{../../vendors/select2/select2.min.js}"></script>
+<script th:src="@{../js/select2.js}"></script>
+<script th:src="@{../js/off-canvas.js}"></script>
+<script th:src="@{../js/misc.js}"></script>
+</html>
